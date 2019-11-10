@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common-header"/>
+<body>
+<div th:replace="common/header :: navbar"/>
+<div class="container" style="padding: 40px 0; ">
+    <h1>Матрицы</h1>
+    <div class="row">
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Row</span>
+                </div>
+                <input type="number" class="form-control" value="0" aria-label="Username"
+                       aria-describedby="basic-addon1" id="rowcount" required>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2">Column</span>
+                </div>
+                <input type="number" class="form-control" value="0" aria-label="Username"
+                       aria-describedby="basic-addon2" id="columncount" required>
+            </div>
+        </div>
+        <div class="col-4">
+            <input type="button" id="create-matrix" value="Создать матрицу" class="btn btn-outline-primary"/>
+        </div>
+    </div>
+    <hr/>
+    <div id="box">
+    </div>
+    <hr/>
+    <div id="type-matrix">
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="identity-matrix" name="matrix" value="identity" checked>
+            <label class="form-check-label" for="identity-matrix">Единичная</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="sparse-matrix" name="matrix" value="sparse">
+            <label class="form-check-label" for="sparse-matrix">Разрежённая (стат файл)</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" id="stat-matrix" name="matrix" value="stat">
+            <label class="form-check-label" for="stat-matrix">Загрузить файл</label>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div id="file-upload" style="display: none;">
+        <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file"
+                           aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="file">Choose file</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="submit" value="Загрузить" id="btnUpload" class="btn btn-outline-info"/>
+            </div>
+        </form>
+    </div>
+    <hr/>
+    <input type="button" id="get-matrix-values" value="Решение" class="btn btn-outline-success"/>
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+</body>
+</html>
